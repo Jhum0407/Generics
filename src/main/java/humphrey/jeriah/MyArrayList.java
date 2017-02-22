@@ -7,6 +7,7 @@ import java.util.Objects;
  */
 public class MyArrayList <E> {
     private E[] array;
+    private int indexPosition;
 
 
     public MyArrayList (){
@@ -65,7 +66,7 @@ public class MyArrayList <E> {
     public E remove(int index) {
         E[] newArray = (E[]) new Object[size() - 1];
         E element = array[index];
-        if (index == 0) {
+        if (index == 1) {
             for (int i = 0; i < size() - 1; i++) {
                 newArray[i] = array[i + 1];
             }
@@ -99,8 +100,9 @@ public class MyArrayList <E> {
 
 
     public boolean contains(E element){
-        for(int i = 0;i<size()-1;i++){
+        for(int i = 0;i<size();i++){
             if (array[i].equals(element)){
+                indexPosition = i+1;
                 return true;
             }
         }
@@ -112,6 +114,14 @@ public class MyArrayList <E> {
             return true;
         }
         return false;
+    }
+
+    public int indexOf(E element){
+        if (contains(element)){
+            return indexPosition;
+        }
+
+        return -1;
     }
 
     }
